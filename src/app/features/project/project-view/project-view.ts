@@ -1,5 +1,6 @@
-import { Component, inject, signal, computed, OnInit, DestroyRef } from '@angular/core';
+import { Component, inject, signal, OnInit, DestroyRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -17,9 +18,12 @@ import { AddTaskDialog } from '../add-task-dialog/add-task-dialog';
 import { EditTaskDialog } from '../edit-task-dialog/edit-task-dialog';
 import { ConfirmDialog } from '../../dashboard/confirm-dialog/confirm-dialog';
 
+const KANBAN_STATUSES: TaskStatus[] = ['todo', 'in_progress', 'done'];
+
 @Component({
   selector: 'app-project-view',
   imports: [
+    DragDropModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,
@@ -43,8 +47,17 @@ export class ProjectView implements OnInit {
   loading = signal(true);
   error = signal<string | null>(null);
 
+  readonly kanbanStatuses = KANBAN_STATUSES;
+
   tasksByStatus = (status: TaskStatus): Task[] =>
     this.tasks().filter((t) => t.status === status);
+
+  onTaskDrop(event: CdkDragDrop<Task[], Task | null>): void {
+    const task = event.item.data as Task;
+    const newStatus = event.container.id as TaskStatus;
+    if (!task || task.status === newStatus) return;
+    this.updateStatus(task, newStatus);
+  }
 
   ngOnInit(): void {
     const projectId$ = this.route.paramMap.pipe(

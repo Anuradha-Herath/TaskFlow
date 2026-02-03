@@ -44,9 +44,28 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-height: 60px;
+
+  &.cdk-drop-list-dragging .task-card:not(.cdk-drag-placeholder) {
+    transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.4;
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .task-card {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
   mat-card-content {
     padding: 12px 16px;
 

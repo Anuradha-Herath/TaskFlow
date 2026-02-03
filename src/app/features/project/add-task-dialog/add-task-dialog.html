@@ -11,7 +11,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="{ title, description }" [disabled]="!title?.trim()">
+  <button mat-raised-button color="primary" [mat-dialog-close]="{ title, description }" [disabled]="!title.trim()">
     Add
   </button>
 </mat-dialog-actions>

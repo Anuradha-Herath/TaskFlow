@@ -1,6 +1,34 @@
 # TaskFlow — Team Task Management System
 
-A Jira-style task manager built with **Angular**, **Angular Material**, and a mock REST API (**json-server**). Features authentication (fake JWT), route guards, project and task CRUD, and a Kanban task board.
+A Jira-style task manager built with **Angular**, **Angular Material**, and a mock REST API (**json-server**). Features authentication (fake JWT), route guards, project and task CRUD, and a Kanban task board with drag-and-drop.
+
+## Tech stack
+
+- **Angular 21** — standalone components, signals, control flow
+- **Angular Material** — UI components (cards, dialogs, forms, buttons, snackbar)
+- **Angular CDK** — drag-and-drop for Kanban board
+- **RxJS** — reactive data and HTTP
+- **json-server** — mock REST API (dev)
+
+## Features
+
+- **Authentication:** Login and register with reactive forms; fake JWT stored in localStorage; route guard protects dashboard and project routes
+- **Projects:** Create and delete projects; list view with open/delete actions
+- **Tasks:** Add, edit, delete tasks; Kanban board with Todo / In Progress / Done columns
+- **Kanban drag-and-drop:** Move task cards between columns to update status (Angular CDK)
+- **User-scoped projects:** Dashboard shows only projects owned by the current user
+- **Error handling:** Global HTTP error interceptor; 404 page for unknown routes
+- **UI:** Loading and error states; confirmation dialogs for delete; Material snackbar feedback
+
+## Screenshots
+
+<!-- Add 1–2 screenshots (e.g. dashboard, Kanban board) here when ready -->
+<!-- Example: ![Dashboard](docs/screenshot-dashboard.png) -->
+
+## Live demo
+
+<!-- Add your deployed URL here when you deploy (e.g. Vercel, Netlify) -->
+<!-- Example: [Live demo](https://taskflow-demo.vercel.app) -->
 
 ## Quick start
 
@@ -16,7 +44,7 @@ A Jira-style task manager built with **Angular**, **Angular Material**, and a mo
    npm run server
    ```
 
-   This runs json-server on `http://localhost:3000` with `db.json`.
+   This runs json-server on `http://localhost:3000` with `db.json`. Start this first so the app can load projects and tasks.
 
 3. **Start the Angular app**
 
@@ -26,58 +54,45 @@ A Jira-style task manager built with **Angular**, **Angular Material**, and a mo
 
    Open `http://localhost:4200/`. Register or log in (any email/password works with the fake auth), then create projects and tasks.
 
-## Development server
+## Development
 
-To start the Angular dev server only:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser at `http://localhost:4200/`. The app will reload when you change source files. For full functionality (projects and tasks), also run `npm run server` so the API is available.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
+- **Serve:** `ng serve` — dev server at `http://localhost:4200/` (run `npm run server` in another terminal for full functionality)
+- **Build:** `ng build` — production build in `dist/`
+- **Lint:** `ng lint` — ESLint
+- **Test:** `ng test` — unit tests
 
 ## Building
-
-To build the project run:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Production output is in `dist/` (or `dist/taskflow/browser/` for the application build). Use the production configuration for deployment.
+
+## Deployment
+
+The app is a static Angular SPA. Build with `ng build` (production config) and deploy the output to any static host.
+
+- **Vercel:** Connect the repo; set build command to `npm run build` and output directory to `dist/taskflow/browser` (or the path shown after build).
+- **Netlify:** Same: build command `npm run build`, publish directory `dist/taskflow/browser`.
+- **GitHub Pages:** Build, then push the contents of `dist/taskflow/browser` to a `gh-pages` branch or use a GitHub Action to build and deploy.
+
+**API for production:** The app uses `environment.production.ts` with `apiUrl: '/api'` by default. For a live demo you can either:
+
+- Deploy a real backend (e.g. Firebase, Supabase, or a small Node/Express API) and set `apiUrl` to that URL before building, or
+- Deploy json-server (or a read-only mock API) alongside the frontend and proxy `/api` to it, or
+- Document that the live demo uses client-side fake auth and no persistent backend.
+
+After deploying, add the live URL under **Live demo** above.
 
 ## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## Additional resources
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [Angular CLI](https://angular.dev/tools/cli)
+- [Angular Material](https://material.angular.io/)
+- [Angular CDK Drag and Drop](https://material.angular.io/cdk/drag-drop/overview)

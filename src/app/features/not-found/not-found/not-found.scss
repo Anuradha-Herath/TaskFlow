@@ -1,0 +1,19 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 24px;
+
+  mat-card {
+    max-width: 400px;
+    text-align: center;
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+  }
+}

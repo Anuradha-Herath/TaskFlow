@@ -31,5 +31,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/auth/register/register').then((m) => m.Register),
   },
-  { path: '**', redirectTo: 'dashboard' },
+  {
+    path: '404',
+    loadComponent: () =>
+      import('./features/not-found/not-found/not-found').then((m) => m.NotFound),
+  },
+  { path: '**', loadComponent: () => import('./features/not-found/not-found/not-found').then((m) => m.NotFound) },
 ];

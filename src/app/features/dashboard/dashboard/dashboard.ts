@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProjectService, Project } from '../../../core/services/project.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { CreateProjectDialog } from '../create-project-dialog/create-project-dialog';
 import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
 
@@ -25,6 +26,7 @@ import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
 })
 export class Dashboard implements OnInit {
   private projectService = inject(ProjectService);
+  private authService = inject(AuthService);
   private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
   private destroyRef = inject(DestroyRef);
@@ -45,7 +47,9 @@ export class Dashboard implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (list) => {
-          this.projects.set(list);
+          const userId = this.authService.currentUser()?.id;
+          const filtered = userId ? list.filter((p) => p.userId === userId) : list;
+          this.projects.set(filtered);
           this.loading.set(false);
         },
         error: (err) => {

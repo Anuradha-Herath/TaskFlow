@@ -17,100 +17,45 @@
       </mat-card-content>
     </mat-card>
   } @else {
-    <div class="kanban-board">
-      <div class="kanban-column" data-status="todo">
-        <h3 class="column-title">Todo</h3>
-        <div class="tasks-list">
-          @for (task of tasksByStatus('todo'); track task.id) {
-            <mat-card class="task-card">
-              <mat-card-content>
-                <h4>{{ task.title }}</h4>
-                @if (task.description) {
-                  <p class="task-description">{{ task.description }}</p>
-                }
-                <mat-form-field appearance="outline" subscriptSizing="dynamic" class="status-select">
-                  <mat-label>Status</mat-label>
-                  <mat-select [value]="task.status" (selectionChange)="updateStatus(task, $event.value)">
-                    <mat-option value="todo">Todo</mat-option>
-                    <mat-option value="in_progress">In Progress</mat-option>
-                    <mat-option value="done">Done</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-icon-button (click)="openEditTask(task)" aria-label="Edit">
-                  <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button color="warn" (click)="confirmDeleteTask(task)" aria-label="Delete">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </mat-card-actions>
-            </mat-card>
-          }
+    <div class="kanban-board" cdkDropListGroup>
+      @for (status of kanbanStatuses; track status) {
+        <div class="kanban-column" [attr.data-status]="status">
+          <h3 class="column-title">{{ status === 'in_progress' ? 'In Progress' : (status === 'todo' ? 'Todo' : 'Done') }}</h3>
+          <div
+            class="tasks-list"
+            cdkDropList
+            [id]="status"
+            [cdkDropListData]="tasksByStatus(status)"
+            (cdkDropListDropped)="onTaskDrop($event)">
+            @for (task of tasksByStatus(status); track task.id) {
+              <mat-card class="task-card" cdkDrag [cdkDragData]="task">
+                <mat-card-content cdkDragHandle>
+                  <h4>{{ task.title }}</h4>
+                  @if (task.description) {
+                    <p class="task-description">{{ task.description }}</p>
+                  }
+                  <mat-form-field appearance="outline" subscriptSizing="dynamic" class="status-select">
+                    <mat-label>Status</mat-label>
+                    <mat-select [value]="task.status" (selectionChange)="updateStatus(task, $event.value)">
+                      <mat-option value="todo">Todo</mat-option>
+                      <mat-option value="in_progress">In Progress</mat-option>
+                      <mat-option value="done">Done</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-icon-button (click)="openEditTask(task)" aria-label="Edit">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn" (click)="confirmDeleteTask(task)" aria-label="Delete">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+            }
+          </div>
         </div>
-      </div>
-      <div class="kanban-column" data-status="in_progress">
-        <h3 class="column-title">In Progress</h3>
-        <div class="tasks-list">
-          @for (task of tasksByStatus('in_progress'); track task.id) {
-            <mat-card class="task-card">
-              <mat-card-content>
-                <h4>{{ task.title }}</h4>
-                @if (task.description) {
-                  <p class="task-description">{{ task.description }}</p>
-                }
-                <mat-form-field appearance="outline" subscriptSizing="dynamic" class="status-select">
-                  <mat-label>Status</mat-label>
-                  <mat-select [value]="task.status" (selectionChange)="updateStatus(task, $event.value)">
-                    <mat-option value="todo">Todo</mat-option>
-                    <mat-option value="in_progress">In Progress</mat-option>
-                    <mat-option value="done">Done</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-icon-button (click)="openEditTask(task)" aria-label="Edit">
-                  <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button color="warn" (click)="confirmDeleteTask(task)" aria-label="Delete">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </mat-card-actions>
-            </mat-card>
-          }
-        </div>
-      </div>
-      <div class="kanban-column" data-status="done">
-        <h3 class="column-title">Done</h3>
-        <div class="tasks-list">
-          @for (task of tasksByStatus('done'); track task.id) {
-            <mat-card class="task-card">
-              <mat-card-content>
-                <h4>{{ task.title }}</h4>
-                @if (task.description) {
-                  <p class="task-description">{{ task.description }}</p>
-                }
-                <mat-form-field appearance="outline" subscriptSizing="dynamic" class="status-select">
-                  <mat-label>Status</mat-label>
-                  <mat-select [value]="task.status" (selectionChange)="updateStatus(task, $event.value)">
-                    <mat-option value="todo">Todo</mat-option>
-                    <mat-option value="in_progress">In Progress</mat-option>
-                    <mat-option value="done">Done</mat-option>
-                  </mat-select>
-                </mat-form-field>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-icon-button (click)="openEditTask(task)" aria-label="Edit">
-                  <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button color="warn" (click)="confirmDeleteTask(task)" aria-label="Delete">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </mat-card-actions>
-            </mat-card>
-          }
-        </div>
-      </div>
+      }
     </div>
   }
 </div>
