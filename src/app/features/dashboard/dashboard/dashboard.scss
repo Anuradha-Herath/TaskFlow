@@ -65,10 +65,41 @@
   }
 }
 
+.summary-card {
+  margin-bottom: 24px;
+  border-radius: 8px;
+
+  h3 {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .summary-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+
+    .stat {
+      font-size: 0.875rem;
+      color: var(--mat-sys-on-surface-variant, rgba(0, 0, 0, 0.7));
+
+      &.overdue {
+        color: var(--mat-sys-error, #b00020);
+      }
+    }
+  }
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
+}
+
+.project-card .overdue {
+  color: var(--mat-sys-error, #b00020);
 }
 
 .project-card {

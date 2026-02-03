@@ -3,7 +3,14 @@
     <app-sidebar (logout)="onLogout()"></app-sidebar>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-navbar [userName]="userName()" (menuClick)="toggleSidenav()"></app-navbar>
+    <app-navbar [userName]="userName()" (menuClick)="toggleSidenav()" (logoutClick)="onLogout()"></app-navbar>
+    @if (apiUnavailable()) {
+      <div class="api-unavailable-banner" role="alert">
+        <mat-icon>cloud_off</mat-icon>
+        <span>Backend unavailable. Check your connection or try again later.</span>
+        <button mat-button (click)="dismissApiBanner()">Dismiss</button>
+      </div>
+    }
     <main class="main-content">
       <router-outlet></router-outlet>
     </main>

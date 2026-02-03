@@ -31,3 +31,15 @@ jobs:
 
       - name: Build
         run: npm run build -- --configuration=production
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: E2E tests
+        run: |
+          npm run server &
+          npx serve dist/taskflow/browser -l 4200 &
+          npx wait-on http://localhost:3000 http://localhost:4200
+          npm run e2e
+        env:
+          CI: true

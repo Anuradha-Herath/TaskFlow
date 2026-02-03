@@ -1,0 +1,48 @@
+.profile {
+  padding: 0;
+  max-width: 480px;
+
+  h1 {
+    margin: 0 0 24px 0;
+    font-size: 1.5rem;
+  }
+}
+
+.profile-card {
+  border-radius: 8px;
+
+  .profile-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--mat-sys-primary, #1976d2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .profile-details {
+    margin: 16px 0 0 0;
+    padding: 0;
+
+    dt {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.6);
+      margin-top: 12px;
+      margin-bottom: 4px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    dd {
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+}

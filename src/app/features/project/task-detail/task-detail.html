@@ -1,0 +1,61 @@
+<div class="task-detail">
+  @if (loading()) {
+    <mat-spinner diameter="40" class="spinner"></mat-spinner>
+  } @else if (error()) {
+    <mat-card class="error-card">
+      <mat-card-content>
+        <p>{{ error() }}</p>
+        <a mat-button routerLink="/dashboard">Back to Dashboard</a>
+      </mat-card-content>
+    </mat-card>
+  } @else if (task(); as t) {
+    <div class="detail-header">
+      <a mat-button routerLink="/project/{{ projectId() }}" class="back-link">
+        <mat-icon>arrow_back</mat-icon>
+        {{ projectName() ?? 'Project' }}
+      </a>
+      <button mat-raised-button color="primary" (click)="openEdit()">
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
+    </div>
+
+    <mat-card class="detail-card">
+      <mat-card-header>
+        <mat-card-title>{{ t.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="meta-row">
+          <span class="meta-label">Status</span>
+          <mat-form-field appearance="outline" class="status-select">
+            <mat-select [value]="t.status" (selectionChange)="onStatusChange($event.value)">
+              @for (opt of statusOptions; track opt.value) {
+                <mat-option [value]="opt.value">{{ opt.label }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Priority</span>
+          <span class="priority-badge" [class]="'priority-' + (t.priority ?? 'medium')">
+            {{ formatPriority(t.priority) }}
+          </span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Assignee</span>
+          <span>{{ getAssigneeName(t.assigneeId) }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Due date</span>
+          <span>{{ formatDueDate(t.dueDate) }}</span>
+        </div>
+        @if (t.description) {
+          <div class="description-section">
+            <span class="meta-label">Description</span>
+            <p class="description-text">{{ t.description }}</p>
+          </div>
+        }
+      </mat-card-content>
+    </mat-card>
+  }
+</div>

@@ -15,9 +15,19 @@ export const routes: Routes = [
           import('./features/dashboard/dashboard/dashboard').then((m) => m.Dashboard),
       },
       {
+        path: 'profile',
+        loadComponent: () =>
+          import('./features/profile/profile/profile').then((m) => m.Profile),
+      },
+      {
         path: 'project/:id',
         loadComponent: () =>
           import('./features/project/project-view/project-view').then((m) => m.ProjectView),
+      },
+      {
+        path: 'project/:projectId/task/:taskId',
+        loadComponent: () =>
+          import('./features/project/task-detail/task-detail').then((m) => m.TaskDetail),
       },
     ],
   },

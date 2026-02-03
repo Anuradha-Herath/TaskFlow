@@ -17,6 +17,7 @@ A Jira-style task manager built with **Angular**, **Angular Material**, and a mo
 - **Tasks:** Add, edit, delete tasks; Kanban board with Todo / In Progress / Done columns
 - **Kanban drag-and-drop:** Move task cards between columns to update status (Angular CDK)
 - **User-scoped projects:** Dashboard shows only projects owned by the current user
+- **Auth and API security (demo):** Authentication is client-side with a fake JWT fallback when the API does not provide login/register. **This is for development/demo only and is not secure.** The optional dev server (`npm run server:secure`) uses middleware that returns 401 for protected routes when no `Authorization: Bearer` header is sent. For production, use a real backend with proper JWT and protected endpoints.
 - **Error handling:** Global HTTP error interceptor; 404 page for unknown routes
 - **UI:** Loading and error states; confirmation dialogs for delete; Material snackbar feedback
 
@@ -90,6 +91,20 @@ After deploying, add the live URL under **Live demo** above.
 ```bash
 ng test
 ```
+
+## E2E tests (Playwright)
+
+Run the mock API in one terminal (`npm run server`), then in another:
+
+```bash
+npm run e2e
+```
+
+Playwright will start the Angular dev server if needed. E2E tests cover login, dashboard, opening a project, and adding a task. For CI, the workflow runs E2E after build using the production bundle and json-server.
+
+## Accessibility
+
+Angular Material provides focus trapping in dialogs and keyboard navigation. Key actions (login, dialogs, menu) are keyboard and screen-reader friendly. For deeper checks, use browser DevTools or tools like axe.
 
 ## Additional resources
 
