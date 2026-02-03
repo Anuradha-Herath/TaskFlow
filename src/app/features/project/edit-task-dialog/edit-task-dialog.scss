@@ -1,8 +1,17 @@
-.full-width {
-  width: 100%;
-  margin-top: 8px;
+mat-dialog-content.dialog-content {
+  min-width: 320px;
+  padding: 0 24px 8px;
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 }
 
-mat-dialog-content {
-  min-width: 300px;
+.full-width {
+  width: 100%;
 }

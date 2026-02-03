@@ -1,8 +1,9 @@
 <h2 mat-dialog-title>Add Task</h2>
-<mat-dialog-content>
+<mat-dialog-content class="dialog-content">
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Title</mat-label>
     <input matInput [(ngModel)]="title" placeholder="Task title" />
+    <mat-hint>Short, descriptive title</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Description</mat-label>

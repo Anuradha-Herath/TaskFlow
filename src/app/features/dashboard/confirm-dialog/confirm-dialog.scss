@@ -1,0 +1,23 @@
+mat-dialog-content.dialog-content.confirm-content {
+  min-width: 320px;
+  padding: 0 24px 8px;
+}
+
+.confirm-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
+  .confirm-icon {
+    flex-shrink: 0;
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+    color: var(--mat-sys-error, #b00020);
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+}

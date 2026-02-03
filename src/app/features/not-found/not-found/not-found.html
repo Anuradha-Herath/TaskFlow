@@ -1,13 +1,14 @@
 <div class="not-found">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Page not found</mat-card-title>
-    </mat-card-header>
+  <mat-card class="not-found-card">
     <mat-card-content>
-      <p>The page you're looking for doesn't exist or has been moved.</p>
+      <p class="not-found-code">404</p>
+      <mat-card-header>
+        <mat-card-title>Page not found</mat-card-title>
+      </mat-card-header>
+      <p class="not-found-message">The page you're looking for doesn't exist or has been moved.</p>
     </mat-card-content>
     <mat-card-actions>
-      <a mat-raised-button color="primary" routerLink="/dashboard">Go to Dashboard</a>
+      <a mat-raised-button color="primary" routerLink="/dashboard" class="primary-cta">Go to Dashboard</a>
       <a mat-button routerLink="/login">Login</a>
     </mat-card-actions>
   </mat-card>

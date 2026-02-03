@@ -10,14 +10,59 @@
   flex-wrap: wrap;
   gap: 16px;
 
-  h1 {
-    margin: 0;
-    font-size: 1.5rem;
+  .header-text {
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .header-subtitle {
+      margin: 4px 0 0 0;
+      font-size: 0.875rem;
+      color: var(--mat-sys-on-surface-variant, rgba(0, 0, 0, 0.6));
+    }
   }
 }
 
-.spinner {
-  margin: 48px auto;
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.skeleton-card {
+  border-radius: 8px;
+  padding: 16px;
+
+  .skeleton-line {
+    height: 16px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.08);
+    margin-bottom: 12px;
+
+    &.skeleton-title {
+      width: 70%;
+      height: 20px;
+    }
+
+    &.skeleton-sub {
+      width: 50%;
+    }
+  }
+
+  .skeleton-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .skeleton-btn {
+    display: inline-block;
+    width: 64px;
+    height: 36px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.06);
+  }
 }
 
 .projects-grid {
@@ -27,8 +72,19 @@
 }
 
 .project-card {
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
   mat-card-actions {
     padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 }
 
@@ -36,6 +92,43 @@
 .empty-card {
   max-width: 400px;
   margin: 24px 0;
+  border-radius: 8px;
+
+  .error-content,
+  .empty-card mat-card-content > p {
+    margin-bottom: 16px;
+  }
+
+  .error-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    .error-icon {
+      flex-shrink: 0;
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+      color: var(--mat-sys-error, #b00020);
+    }
+
+    p {
+      margin: 0 0 16px 0;
+    }
+  }
+
+  .empty-icon {
+    display: block;
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    color: var(--mat-sys-outline-variant, rgba(0, 0, 0, 0.38));
+  }
+}
+
+.empty-card mat-card-content {
+  text-align: center;
 
   p {
     margin-bottom: 16px;

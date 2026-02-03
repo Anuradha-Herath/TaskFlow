@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../../core/services/auth.service';
 
 function passwordMatchValidator(g: AbstractControl): ValidationErrors | null {
@@ -22,6 +23,7 @@ function passwordMatchValidator(g: AbstractControl): ValidationErrors | null {
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './register.html',
   styleUrl: './register.scss',
