@@ -20,6 +20,23 @@
   margin: 48px auto;
 }
 
+.search-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .search-field {
+    min-width: 200px;
+    flex: 1;
+  }
+
+  .filter-field {
+    min-width: 140px;
+  }
+}
+
 .kanban-board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -112,9 +129,56 @@
     padding: 12px 16px;
 
     h4 {
-      margin: 0 0 8px 0;
+      margin: 0 0 6px 0;
       font-size: 0.95rem;
+
+      .task-title-link {
+        color: inherit;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
+  }
+
+  .task-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .priority-badge {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+
+    &.priority-low {
+      background: rgba(0, 0, 0, 0.08);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    &.priority-medium {
+      background: rgba(25, 118, 210, 0.15);
+      color: #1565c0;
+    }
+    &.priority-high {
+      background: rgba(245, 124, 0, 0.2);
+      color: #e65100;
+    }
+    &.priority-critical {
+      background: rgba(211, 47, 47, 0.15);
+      color: #c62828;
+    }
+  }
+
+  .due-date,
+  .assignee {
+    font-size: 0.75rem;
+    color: var(--mat-sys-on-surface-variant, rgba(0, 0, 0, 0.6));
   }
 
   .task-description {

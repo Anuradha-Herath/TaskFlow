@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Edit Project</h2>
+<mat-dialog-content class="dialog-content">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Project name</mat-label>
+    <input matInput [(ngModel)]="project.name" placeholder="My Project" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="{ id: project.id, name: project.name.trim() }" [disabled]="!project.name.trim()">
+    Save
+  </button>
+</mat-dialog-actions>

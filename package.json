@@ -8,7 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "server": "json-server --watch db.json --port 3000"
+    "server": "json-server --watch db.json --port 3000",
+    "server:secure": "json-server --watch db.json --port 3000 --middlewares server-middleware.cjs",
+    "e2e": "playwright test",
+    "e2e:headed": "playwright test --headed"
   },
   "prettier": {
     "printWidth": 100,
@@ -54,7 +57,10 @@
     "json-server": "^1.0.0-beta.5",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.15.0",
-    "vitest": "^3.0.0",
-    "jsdom": "^25.0.0"
+    "vitest": "^4.0.8",
+    "jsdom": "^25.0.0",
+    "@playwright/test": "^1.49.0",
+    "serve": "^14.2.4",
+    "wait-on": "^8.0.1"
   }
 }

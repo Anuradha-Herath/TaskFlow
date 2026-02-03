@@ -5,9 +5,20 @@
   <span class="app-title">TaskFlow</span>
   <span class="spacer"></span>
   @if (userName()) {
-    <span class="user-area">
-      <span class="user-avatar" [attr.aria-label]="'User ' + userName()">{{ userInitial() }}</span>
+    <button mat-button [matMenuTriggerFor]="userMenu" class="user-menu-trigger" aria-label="User menu">
+      <span class="user-avatar" [attr.aria-hidden]="true">{{ userInitial() }}</span>
       <span class="user-name">{{ userName() }}</span>
-    </span>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu" xPosition="before">
+      <a mat-menu-item routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </a>
+      <button mat-menu-item (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
   }
 </mat-toolbar>

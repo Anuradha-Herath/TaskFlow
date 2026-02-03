@@ -47,7 +47,10 @@
       "description": "Initialize Angular and Material",
       "status": "in_progress",
       "order": 0,
-      "createdAt": "2025-02-01T10:00:00.000Z"
+      "createdAt": "2025-02-01T10:00:00.000Z",
+      "priority": "high",
+      "assigneeId": "user-1",
+      "dueDate": null
     },
     {
       "id": "2",
@@ -56,7 +59,10 @@
       "description": "Login and register with guards",
       "status": "todo",
       "order": 1,
-      "createdAt": "2025-02-01T11:00:00.000Z"
+      "createdAt": "2025-02-01T11:00:00.000Z",
+      "priority": "medium",
+      "assigneeId": null,
+      "dueDate": null
     },
     {
       "id": "3",
@@ -65,7 +71,10 @@
       "description": "Task columns and drag-drop",
       "status": "todo",
       "order": 2,
-      "createdAt": "2025-02-01T12:00:00.000Z"
+      "createdAt": "2025-02-01T12:00:00.000Z",
+      "priority": "medium",
+      "assigneeId": null,
+      "dueDate": null
     },
     {
       "id": "fa11",
@@ -74,7 +83,10 @@
       "description": "qwewe",
       "status": "todo",
       "order": 0,
-      "createdAt": "2026-02-03T07:30:32.712Z"
+      "createdAt": "2026-02-03T07:30:32.712Z",
+      "priority": "medium",
+      "assigneeId": null,
+      "dueDate": null
     },
     {
       "id": "2155",
@@ -83,7 +95,10 @@
       "description": "",
       "status": "todo",
       "order": 0,
-      "createdAt": "2026-02-03T08:06:28.211Z"
+      "createdAt": "2026-02-03T08:06:28.211Z",
+      "priority": "medium",
+      "assigneeId": null,
+      "dueDate": null
     },
     {
       "id": "649b",
@@ -92,7 +107,10 @@
       "description": "adsfdsf",
       "status": "todo",
       "order": 0,
-      "createdAt": "2026-02-03T08:17:10.744Z"
+      "createdAt": "2026-02-03T08:17:10.744Z",
+      "priority": "medium",
+      "assigneeId": null,
+      "dueDate": null
     },
     {
       "id": "4a98",
@@ -101,7 +119,10 @@
       "description": "fddsf",
       "status": "in_progress",
       "order": 0,
-      "createdAt": "2026-02-03T08:17:15.403Z"
+      "createdAt": "2026-02-03T08:17:15.403Z",
+      "priority": "medium",
+      "assigneeId": null,
+      "dueDate": null
     },
     {
       "id": "1c8e",
@@ -110,7 +131,10 @@
       "description": "sdafdf",
       "status": "done",
       "order": 0,
-      "createdAt": "2026-02-03T08:17:19.409Z"
+      "createdAt": "2026-02-03T08:17:19.409Z",
+      "priority": "medium",
+      "assigneeId": null,
+      "dueDate": null
     },
     {
       "id": "5a69",
@@ -119,7 +143,22 @@
       "description": "dsfdsf",
       "status": "todo",
       "order": 0,
-      "createdAt": "2026-02-03T08:29:23.984Z"
+      "createdAt": "2026-02-03T08:29:23.984Z",
+      "priority": "medium",
+      "assigneeId": null,
+      "dueDate": null
+    },
+    {
+      "id": "c548",
+      "projectId": "638f",
+      "title": "dsds",
+      "description": "dsdsds",
+      "status": "in_progress",
+      "order": 0,
+      "createdAt": "2026-02-03T09:04:56.001Z",
+      "priority": "medium",
+      "assigneeId": "user-1",
+      "dueDate": null
     }
   ]
 }
