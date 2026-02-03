@@ -1,5 +1,5 @@
 <h2 mat-dialog-title>Edit Task</h2>
-<mat-dialog-content>
+<mat-dialog-content class="dialog-content">
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Title</mat-label>
     <input matInput [(ngModel)]="task.title" placeholder="Task title" />
@@ -16,10 +16,33 @@
       <mat-option value="done">Done</mat-option>
     </mat-select>
   </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Priority</mat-label>
+    <mat-select [(ngModel)]="task.priority">
+      @for (p of priorities; track p.value) {
+        <mat-option [value]="p.value">{{ p.label }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Due date</mat-label>
+    <input matInput [matDatepicker]="duePicker" [(ngModel)]="taskDueDate" placeholder="Optional" />
+    <mat-datepicker-toggle matIconSuffix [for]="duePicker"></mat-datepicker-toggle>
+    <mat-datepicker #duePicker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Assignee</mat-label>
+    <mat-select [(ngModel)]="taskAssigneeIdValue">
+      <mat-option value="">Unassigned</mat-option>
+      @for (u of users(); track u.id) {
+        <mat-option [value]="u.id">{{ u.name }} ({{ u.email }})</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="task" [disabled]="!task.title?.trim()">
+  <button mat-raised-button color="primary" [mat-dialog-close]="getTask()" [disabled]="!task.title.trim()">
     Save
   </button>
 </mat-dialog-actions>

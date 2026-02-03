@@ -1,5 +1,6 @@
 <div class="auth-container">
-  <mat-card class="auth-card">
+  <mat-card class="auth-card mat-elevation-z4">
+    <h2 class="auth-brand">TaskFlow</h2>
     <mat-card-header>
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
@@ -36,12 +37,17 @@
         @if (errorMessage()) {
           <p class="error-message">{{ errorMessage() }}</p>
         }
-        <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid || loading()">
-          {{ loading() ? 'Creating account...' : 'Register' }}
+        <button mat-raised-button color="primary" type="submit" class="auth-submit" [disabled]="registerForm.invalid || loading()">
+          @if (loading()) {
+            <mat-spinner diameter="20" class="button-spinner"></mat-spinner>
+            <span>Creating account...</span>
+          } @else {
+            Register
+          }
         </button>
       </form>
       <p class="auth-footer">
-        Already have an account? <a routerLink="/login">Login</a>
+        Already have an account? <a routerLink="/login" class="auth-link">Login</a>
       </p>
     </mat-card-content>
   </mat-card>

@@ -1,0 +1,39 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.not-found-card {
+  max-width: 400px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.not-found-code {
+  margin: 0 0 8px 0;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--mat-sys-outline-variant, rgba(0, 0, 0, 0.38));
+}
+
+.not-found-message {
+  margin: 0 0 24px 0;
+  color: var(--mat-sys-on-surface-variant, rgba(0, 0, 0, 0.6));
+}
+
+.not-found mat-card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  flex-wrap: wrap;
+
+  .primary-cta {
+    font-weight: 500;
+  }
+}

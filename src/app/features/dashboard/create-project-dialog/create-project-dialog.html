@@ -1,13 +1,14 @@
 <h2 mat-dialog-title>New Project</h2>
-<mat-dialog-content>
+<mat-dialog-content class="dialog-content">
   <mat-form-field appearance="outline" class="full-width">
     <mat-label>Project name</mat-label>
     <input matInput [(ngModel)]="name" placeholder="My Project" />
+    <mat-hint>Short, descriptive name</mat-hint>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="name" [disabled]="!name?.trim()">
+  <button mat-raised-button color="primary" [mat-dialog-close]="name" [disabled]="!name.trim()">
     Create
   </button>
 </mat-dialog-actions>

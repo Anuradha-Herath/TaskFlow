@@ -9,34 +9,65 @@
 .auth-card {
   max-width: 400px;
   width: 100%;
+  border-radius: 12px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.auth-brand {
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--mat-sys-primary, #1976d2);
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 
   .full-width {
     width: 100%;
   }
 
-  button {
-    margin-top: 8px;
+  .auth-submit {
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    .button-spinner {
+      display: inline-block;
+    }
   }
 }
 
 .auth-footer {
-  margin-top: 16px;
+  margin-top: 24px;
   text-align: center;
   font-size: 0.875rem;
 
-  a {
-    color: var(--mat-primary);
+  .auth-link {
+    color: var(--mat-sys-primary, #1976d2);
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--mat-sys-primary, #1976d2);
+      outline-offset: 2px;
+    }
   }
 }
 
 .error-message {
-  color: var(--mat-warn);
+  color: var(--mat-sys-error, #b00020);
   font-size: 0.875rem;
   margin: 0;
 }

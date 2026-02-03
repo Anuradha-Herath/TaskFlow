@@ -1,10 +1,24 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="navbar-toolbar mat-elevation-z4">
   <button mat-icon-button (click)="menuClick.emit()" aria-label="Toggle menu">
     <mat-icon>menu</mat-icon>
   </button>
   <span class="app-title">TaskFlow</span>
   <span class="spacer"></span>
   @if (userName()) {
-    <span class="user-name">{{ userName() }}</span>
+    <button mat-button [matMenuTriggerFor]="userMenu" class="user-menu-trigger" aria-label="User menu">
+      <span class="user-avatar" [attr.aria-hidden]="true">{{ userInitial() }}</span>
+      <span class="user-name">{{ userName() }}</span>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu" xPosition="before">
+      <a mat-menu-item routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </a>
+      <button mat-menu-item (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
   }
 </mat-toolbar>

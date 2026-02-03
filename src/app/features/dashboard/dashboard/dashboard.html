@@ -1,6 +1,9 @@
 <div class="dashboard">
   <div class="dashboard-header">
-    <h1>Projects</h1>
+    <div class="header-text">
+      <h1>Projects</h1>
+      <p class="header-subtitle">Manage your projects</p>
+    </div>
     <button mat-raised-button color="primary" (click)="openCreateDialog()">
       <mat-icon>add</mat-icon>
       New Project
@@ -8,31 +11,76 @@
   </div>
 
   @if (loading()) {
-    <mat-spinner diameter="40" class="spinner"></mat-spinner>
+    <div class="skeleton-grid">
+      @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+        <mat-card class="skeleton-card">
+          <div class="skeleton-line skeleton-title"></div>
+          <div class="skeleton-line skeleton-sub"></div>
+          <div class="skeleton-actions">
+            <span class="skeleton-btn"></span>
+            <span class="skeleton-btn"></span>
+          </div>
+        </mat-card>
+      }
+    </div>
   } @else if (error()) {
-    <mat-card class="error-card">
+    <mat-card class="error-card mat-elevation-z2">
       <mat-card-content>
-        <p>{{ error() }}</p>
+        <div class="error-content">
+          <mat-icon class="error-icon">error_outline</mat-icon>
+          <p>{{ error() }}</p>
+        </div>
         <button mat-button color="primary" (click)="loadProjects()">Retry</button>
       </mat-card-content>
     </mat-card>
-  } @else if (projects().length === 0) {
-    <mat-card class="empty-card">
+  } @else if (projects().length > 0) {
+    <mat-card class="summary-card mat-elevation-z2">
+        <mat-card-content>
+          <h3>Overview</h3>
+          <div class="summary-stats">
+            <span class="stat"><strong>{{ summary().total }}</strong> total tasks</span>
+            <span class="stat">{{ summary().todo }} todo</span>
+            <span class="stat">{{ summary().inProgress }} in progress</span>
+            <span class="stat">{{ summary().done }} done</span>
+            @if (summary().overdue > 0) {
+              <span class="stat overdue"><strong>{{ summary().overdue }}</strong> overdue</span>
+            }
+          </div>
+        </mat-card-content>
+      </mat-card>
+  }
+  @if (!loading() && !error() && projects().length === 0) {
+    <mat-card class="empty-card mat-elevation-z2">
       <mat-card-content>
+        <mat-icon class="empty-icon">folder_open</mat-icon>
         <p>No projects yet. Create your first project!</p>
         <button mat-raised-button color="primary" (click)="openCreateDialog()">Create Project</button>
       </mat-card-content>
     </mat-card>
-  } @else {
+  } @else if (projects().length > 0) {
     <div class="projects-grid">
       @for (project of projects(); track project.id) {
-        <mat-card class="project-card">
+        <mat-card class="project-card mat-elevation-z2">
           <mat-card-header>
             <mat-card-title>{{ project.name }}</mat-card-title>
+            @if (getProjectCounts(project.id).total > 0) {
+              <mat-card-subtitle>
+                {{ getProjectCounts(project.id).total }} tasks
+                ({{ getProjectCounts(project.id).todo }} todo, {{ getProjectCounts(project.id).inProgress }} in progress, {{ getProjectCounts(project.id).done }} done)
+                @if (getProjectCounts(project.id).overdue > 0) {
+                  · <span class="overdue">{{ getProjectCounts(project.id).overdue }} overdue</span>
+                }
+              </mat-card-subtitle>
+            }
           </mat-card-header>
           <mat-card-actions>
-            <button mat-button color="primary" [routerLink]="['/project', project.id]">Open</button>
-            <button mat-button color="warn" (click)="confirmDelete(project)">Delete</button>
+            <button mat-raised-button color="primary" [routerLink]="['/project', project.id]">Open</button>
+            <button mat-button (click)="openEditDialog(project)" aria-label="Edit project">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-button (click)="confirmDelete(project)" aria-label="Delete project">
+              <mat-icon>delete</mat-icon>
+            </button>
           </mat-card-actions>
         </mat-card>
       }
