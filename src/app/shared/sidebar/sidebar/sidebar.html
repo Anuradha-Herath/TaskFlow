@@ -1,0 +1,12 @@
+<nav class="sidebar-nav">
+  <mat-nav-list>
+    <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
+      <mat-icon matListItemIcon>dashboard</mat-icon>
+      <span matListItemTitle>Dashboard</span>
+    </a>
+    <a mat-list-item (click)="onLogout()">
+      <mat-icon matListItemIcon>logout</mat-icon>
+      <span matListItemTitle>Logout</span>
+    </a>
+  </mat-nav-list>
+</nav>

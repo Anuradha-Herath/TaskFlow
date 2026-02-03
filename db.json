@@ -1,0 +1,62 @@
+{
+  "users": [
+    {
+      "id": "user-1",
+      "name": "Demo User",
+      "email": "demo@taskflow.com",
+      "password": "demo123"
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "name": "Sample Project",
+      "userId": "user-1",
+      "createdAt": "2025-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "2fd8",
+      "name": "my project 2",
+      "userId": "user-1770104030665",
+      "createdAt": "2026-02-03T07:34:11.178Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "1",
+      "projectId": "1",
+      "title": "Setup project",
+      "description": "Initialize Angular and Material",
+      "status": "in_progress",
+      "order": 0,
+      "createdAt": "2025-02-01T10:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "projectId": "1",
+      "title": "Add auth",
+      "description": "Login and register with guards",
+      "status": "todo",
+      "order": 1,
+      "createdAt": "2025-02-01T11:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "projectId": "1",
+      "title": "Kanban board",
+      "description": "Task columns and drag-drop",
+      "status": "todo",
+      "order": 2,
+      "createdAt": "2025-02-01T12:00:00.000Z"
+    },
+    {
+      "id": "fa11",
+      "projectId": "1",
+      "title": "qwe",
+      "description": "qwewe",
+      "status": "todo",
+      "order": 0,
+      "createdAt": "2026-02-03T07:30:32.712Z"
+    }
+  ]
+}

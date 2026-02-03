@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="menuClick.emit()" aria-label="Toggle menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="app-title">TaskFlow</span>
+  <span class="spacer"></span>
+  @if (userName()) {
+    <span class="user-name">{{ userName() }}</span>
+  }
+</mat-toolbar>

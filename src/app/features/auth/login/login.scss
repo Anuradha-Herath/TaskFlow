@@ -1,0 +1,42 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card {
+  max-width: 400px;
+  width: 100%;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .full-width {
+    width: 100%;
+  }
+
+  button {
+    margin-top: 8px;
+  }
+}
+
+.auth-footer {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.875rem;
+
+  a {
+    color: var(--mat-primary);
+  }
+}
+
+.error-message {
+  color: var(--mat-warn);
+  font-size: 0.875rem;
+  margin: 0;
+}

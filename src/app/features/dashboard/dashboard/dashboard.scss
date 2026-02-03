@@ -1,0 +1,43 @@
+.dashboard {
+  padding: 0;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+}
+
+.spinner {
+  margin: 48px auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  mat-card-actions {
+    padding: 8px 16px;
+  }
+}
+
+.error-card,
+.empty-card {
+  max-width: 400px;
+  margin: 24px 0;
+
+  p {
+    margin-bottom: 16px;
+  }
+}

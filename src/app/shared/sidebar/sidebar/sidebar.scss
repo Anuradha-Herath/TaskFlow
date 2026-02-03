@@ -1,0 +1,25 @@
+.sidebar-nav {
+  padding: 16px 0;
+
+  mat-nav-list {
+    padding-top: 0;
+  }
+
+  a[mat-list-item] {
+    margin: 4px 8px;
+    border-radius: 4px;
+
+    &::before {
+      display: none;
+    }
+
+    &.active {
+      background: rgba(0, 0, 0, 0.04);
+      font-weight: 500;
+    }
+
+    mat-icon[matListItemIcon] {
+      margin-right: 16px;
+    }
+  }
+}
